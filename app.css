@@ -649,10 +649,42 @@ option {
 
 .user-team-selector {
   min-width: 180px;
+  gap: 8px;
+}
+
+.user-team-selector label {
+  color: #22313f;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 #user-team-select {
-  width: 110px;
+  width: 118px;
+  border-radius: 10px;
+  border: 1px solid rgba(120, 146, 168, 0.45);
+  color: #0f1c28;
+  background-color: #f5f9fc;
+  font-weight: 600;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+#user-team-select:focus {
+  box-shadow: 0 0 0 0.2rem rgba(72, 151, 220, 0.22);
+  border-color: rgba(153, 209, 255, 0.75);
+}
+
+.user-team-selector.team-red #user-team-select {
+  border-color: rgba(211, 62, 62, 0.58);
+  background: linear-gradient(180deg, #fff7f7, #ffe7e7);
+  color: #7d1f1f;
+  box-shadow: 0 0 0 0.14rem rgba(220, 76, 76, 0.15);
+}
+
+.user-team-selector.team-blue #user-team-select {
+  border-color: rgba(53, 122, 194, 0.58);
+  background: linear-gradient(180deg, #f4fbff, #e3f2ff);
+  color: #174d80;
+  box-shadow: 0 0 0 0.14rem rgba(70, 150, 224, 0.16);
 }
 
 .tcc-tabs {
