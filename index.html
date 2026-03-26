@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Reinforce</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='app.css'>
+    <script src='dist/bundle.js' defer></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container-fluid">
+		 <a class="navbar-brand" id="reinforceHome" href="javascript:navHandler.reinforce()" data-sim-only="true">Reinforce</a>
+		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+			  <li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				  Aircraft Entities
+				</a>
+				<ul class="dropdown-menu">
+				  <li><a class="dropdown-item"  href="javascript:navHandler.createAircraftEntity('f16')">F16</a></li>
+				  <li><a class="dropdown-item" href="javascript:navHandler.createAircraftEntity('tfx')">TFX</a></li>
+				  <li><a class="dropdown-item" href="javascript:navHandler.createAircraftEntity('su27')">SU27</a></li>
+				  <li><a class="dropdown-item" href="javascript:navHandler.createAircraftEntity('anka3')">ANKA3</a></li>
+				  <li><a class="dropdown-item" href="javascript:navHandler.createAircraftEntity('hurjet')">HURJET</a></li>
+				</ul>
+			  </li>
+
+			  <li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				  Ground Entities
+				</a>
+				<ul class="dropdown-menu">
+				  <li><a class="dropdown-item" href="javascript:navHandler.createGroundEntity('srsam')">Short Range</a></li>
+				  <li><a class="dropdown-item" href="javascript:navHandler.createGroundEntity('mrsam')">Medium Range</a></li>
+				  <li><a class="dropdown-item" href="javascript:navHandler.createGroundEntity('lrsam')">Long Range</a></li>
+				</ul>
+			  </li>
+
+			  <li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				  More
+				</a>
+				<ul class="dropdown-menu">
+					<li><a class="dropdown-item" href="javascript:navHandler.createMessengerEntity()">Create a Messenger</a></li>
+				  	<li><a class="dropdown-item" href="javascript:navHandler.dumpScenario()">Dump Scenario</a></li>
+				  	<li><a class="dropdown-item" href="javascript:navHandler.loadScenario()">Load Scenario</a></li>
+					<li data-sim-only="true"><a class="dropdown-item" href="javascript:navHandler.serveTensorboards()">Serve Tensorboards (X)</a></li>
+				  	<li><a class="dropdown-item" href="">Live Entity Info (X)</a></li>
+					  <li data-sim-only="true"><a class="dropdown-item" href="javascript:navHandler.startReinforce()">Start Session</a></li>
+					  <li data-sim-only="true"><a class="dropdown-item" href="javascript:navHandler.terminateSession()">Terminate Session</a></li>
+
+				</ul>
+			  </li>
+			</ul>
+            <div class="d-flex align-items-center user-team-selector">
+              <label class="me-2 mb-0" for="user-team-select">Team</label>
+              <select id="user-team-select" class="form-select form-select-sm" onchange="navHandler.setUserTeam(this.value)">
+                <option value="blue">Blue</option>
+                <option value="red" selected>Red</option>
+              </select>
+            </div>
+		  </div>
+		</div>
+	  </nav>
+
+	  <div id="battle-layout">
+		<div id="map"></div>
+		<aside id="tcc-sidebar" class="tcc-sidebar"></aside>
+	  </div>
+
+	  <div class="modal fade" id="basic-property-modal" tabindex="-1" data-bs-backdrop="false">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title">Modal Title</h5>
+			  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+			  <form id="basic-property-form">
+				<!-- Add your form elements here -->
+			  </form>
+			</div>
+			<div class="modal-footer">
+			<!--<button id="basic-property-submit" type="submit" class="btn btn-primary">Save changes</button> -->
+			<!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+	  <div class="modal fade" id="initial-conditions-modal" tabindex="-1" data-bs-backdrop="false">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title">Modal Title</h5>
+			  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+			  <form id="initial-conditions-form">
+				<!-- Add your form elements here -->
+			  </form>
+			</div>
+			<div class="modal-footer">
+			 <!--
+			 <button id="initial-conditions-submit" type="submit" class="btn btn-primary">Save changes</button>
+			 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+			  -->
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+	  <div class="modal fade" id="weaponary-modal" tabindex="-1" data-bs-backdrop="false">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title">Modal Title</h5>
+			  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+			  <form id="weaponary-form">
+				<!-- Add your form elements here -->
+			  </form>
+			</div>
+			<div class="modal-footer">
+			  <!--
+			  <button id="weaponary-submit" type="submit" class="btn btn-primary">Save changes</button>
+			  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+			  -->
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+	  <div class="modal fade" id="training-args-modal" tabindex="-1" data-bs-backdrop="false">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title">Modal Title</h5>
+			  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+			  <form id="training-args-form">
+				<!-- Add your form elements here -->
+			  </form>
+			</div>
+			<div class="modal-footer">
+			  <!--
+			  <button id="weaponary-submit" type="submit" class="btn btn-primary">Save changes</button>
+			  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+			  -->
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+	  <div class="modal fade" id="wingmen-modal" tabindex="-1" data-bs-backdrop="false">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title">Modal Title</h5>
+			  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+			  <form id="wingmen-form">
+				<!-- Add your form elements here -->
+			  </form>
+			</div>
+			<div class="modal-footer">
+			  <!--
+			  <button id="weaponary-submit" type="submit" class="btn btn-primary">Save changes</button>
+			  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+			  -->
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+
+	  <div class="modal fade" id="intel-modal" tabindex="-1" data-bs-backdrop="false">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title">Modal Title</h5>
+			  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+			  <form id="intel-form">
+				<!-- Add your form elements here -->
+			  </form>
+			</div>
+			<div class="modal-footer"></div>
+		  </div>
+		</div>
+	  </div>
+
+	</body>
+</html>
