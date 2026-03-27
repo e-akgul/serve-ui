@@ -20,6 +20,12 @@ html, body {
 }
 
 .tcc-sidebar {
+  --team-accent-rgb: 143, 187, 214;
+  --team-accent: rgb(var(--team-accent-rgb));
+  --team-accent-soft: rgba(var(--team-accent-rgb), 0.14);
+  --team-accent-border: rgba(var(--team-accent-rgb), 0.34);
+  --team-accent-glow: rgba(var(--team-accent-rgb), 0.22);
+
   width: 650px;
   min-width: 450px;
   max-width: 55vw;
@@ -31,7 +37,27 @@ html, body {
   overflow-y: hidden;
   overflow-x: visible;
   position: relative;
-  transition: width 0.12s ease-out;
+  transition: width 0.12s ease-out, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.tcc-sidebar.team-blue {
+  --team-accent-rgb: 59, 130, 246;
+}
+
+.tcc-sidebar.team-red {
+  --team-accent-rgb: 239, 68, 68;
+}
+
+.tcc-sidebar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(var(--team-accent-rgb), 0.85) 0%, rgba(var(--team-accent-rgb), 0.2) 75%, rgba(var(--team-accent-rgb), 0) 100%);
+  pointer-events: none;
+  z-index: 2;
 }
 
 .tcc-main {
@@ -646,6 +672,42 @@ option {
   transform: rotate(45deg);
 }
 
+
+
+.entity-id-toggle-wrap {
+  gap: 8px;
+}
+
+.entity-id-toggle-wrap .form-check-label {
+  color: #22313f;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+#entity-id-toggle {
+  width: 2.2em;
+  height: 1.15em;
+  cursor: pointer;
+}
+
+.leaflet-tooltip.entity-id-tooltip {
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 2px 5px;
+  border-radius: 999px;
+  color: #eef8ff;
+  background: rgba(9, 16, 24, 0.78);
+  border: 1px solid rgba(164, 196, 221, 0.45);
+  letter-spacing: 0.02em;
+  pointer-events: none;
+  white-space: nowrap;
+  box-shadow: none;
+}
+
+.leaflet-tooltip-top.entity-id-tooltip:before {
+  display: none;
+}
 
 .user-team-selector {
   min-width: 180px;
@@ -1848,6 +1910,35 @@ option {
 
 .tcc-header-actions .tcc-export-btn {
   white-space: nowrap;
+}
+
+
+.tcc-sidebar .tcc-tab-btn.active,
+.tcc-sidebar .tcc-tab-btn.is-active,
+.tcc-sidebar .tcc-pill.active {
+  border-color: var(--team-accent-border);
+  background: linear-gradient(180deg, rgba(var(--team-accent-rgb), 0.24), rgba(var(--team-accent-rgb), 0.12));
+  box-shadow: 0 0 0 1px rgba(var(--team-accent-rgb), 0.22);
+}
+
+.tcc-sidebar .tcc-export-btn:hover,
+.tcc-sidebar .tcc-tab-btn:hover {
+  border-color: var(--team-accent-border);
+  box-shadow: 0 0 0 1px rgba(var(--team-accent-rgb), 0.2), 0 6px 12px rgba(0, 0, 0, 0.26);
+}
+
+.tcc-sidebar .tcc-section-subtitle,
+.tcc-sidebar .tcc-header h5 {
+  color: color-mix(in srgb, var(--team-accent) 55%, #d4ecff 45%);
+}
+
+.tcc-sidebar .tcc-card,
+.tcc-sidebar .tcc-job {
+  border-color: color-mix(in srgb, var(--team-accent) 18%, rgba(125, 155, 180, 0.34));
+}
+
+.tcc-sidebar .tcc-job {
+  border-left-color: var(--team-accent-border);
 }
 
 /* Readability + density controls */
