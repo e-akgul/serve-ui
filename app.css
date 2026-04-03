@@ -740,12 +740,12 @@ option {
 }
 
 .blue-team-marker.airport-marker {
-  box-shadow: 0 0 0 4px rgba(40, 140, 255, 0.95), 0 0 8px rgba(40, 140, 255, 0.35);
+  box-shadow: none;
   filter: none;
 }
 
 .red-team-marker.airport-marker {
-  box-shadow: 0 0 0 4px rgba(255, 40, 40, 0.95), 0 0 8px rgba(255, 40, 40, 0.35);
+  box-shadow: none;
   filter: none;
 }
 
