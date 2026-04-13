@@ -58,6 +58,7 @@
 					<li data-sim-only="true"><a class="dropdown-item" data-optional-ui="true" data-hide-in-simple-ui="true" href="javascript:navHandler.serveTensorboards()">Serve Tensorboards (X)</a></li>
 				  	<li><a class="dropdown-item" data-optional-ui="true" data-hide-in-simple-ui="true" href="">Live Entity Info (X)</a></li>
 					  <li data-sim-only="true"><a class="dropdown-item" href="javascript:navHandler.startReinforce()">Start Session</a></li>
+					  <li data-sim-only="true"><a class="dropdown-item" href="javascript:navHandler.pauseOrResumeSession()">Pause / Continue Session</a></li>
 					  <li data-sim-only="true"><a class="dropdown-item" href="javascript:navHandler.terminateSession()">Terminate Session</a></li>
 
 				</ul>
@@ -99,6 +100,12 @@
             </div>
             <div class="d-flex align-items-center ms-3">
               <span id="session-state-pill" class="session-state-pill session-idle">Session: Idle</span>
+            </div>
+            <div class="d-flex align-items-center ms-2" data-sim-only="true">
+              <button id="session-action-btn" class="btn session-action-btn session-action-start" type="button" onclick="navHandler.handleSessionAction()" title="Session action">
+                <span id="session-action-icon" class="session-action-icon">▶</span>
+                <span id="session-action-text" class="session-action-text">Start</span>
+              </button>
             </div>
 		  </div>
 		</div>
