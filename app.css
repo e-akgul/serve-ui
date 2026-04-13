@@ -58,10 +58,10 @@ html, body {
 }
 
 .session-action-btn {
-  min-width: 98px;
-  height: 34px;
-  padding: 0 12px;
-  border-radius: 8px;
+  min-width: 92px;
+  height: 32px;
+  padding: 0 16px;
+  border-radius: 999px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -69,23 +69,27 @@ html, body {
   border: 1px solid #cbd5e1;
   font-weight: 700;
   box-shadow: none;
-  background: #f8fafc;
   color: #334155;
+  background: #f8fafc;
   white-space: nowrap;
   line-height: 1;
+  transition: background 0.16s ease, border-color 0.16s ease, box-shadow 0.18s ease, color 0.16s ease;
 }
 
 .session-action-icon {
   line-height: 1;
-  font-size: 1rem;
+  font-size: 0.9rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  color: inherit;
+  transform: translateY(-0.2px);
 }
 
 .session-action-text {
   line-height: 1;
-  font-size: 0.9rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.01em;
   font-weight: 700;
   display: inline-flex;
   align-items: center;
@@ -93,15 +97,43 @@ html, body {
 
 .session-action-btn.session-action-start,
 .session-action-btn.session-action-continue {
-  color: #334155;
-  background: #f8fafc;
-  border-color: #cbd5e1;
+  color: #1d4ed8;
+  background: #dbeafe;
+  border-color: #93c5fd;
+  box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.14);
 }
 
 .session-action-btn.session-action-pause {
-  color: #334155;
-  background: #f8fafc;
-  border-color: #cbd5e1;
+  color: #92400e;
+  background: #fef3c7;
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.14);
+}
+
+.session-action-btn.session-action-start:hover,
+.session-action-btn.session-action-continue:hover {
+  color: #1e40af;
+  background: #bfdbfe;
+  border-color: #60a5fa;
+}
+
+.session-action-btn.session-action-pause:hover {
+  color: #78350f;
+  background: #fde68a;
+  border-color: #f59e0b;
+}
+
+.session-action-btn:focus-visible {
+  outline: none;
+}
+
+.session-action-btn.session-action-start:focus-visible,
+.session-action-btn.session-action-continue:focus-visible {
+  box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.18), 0 0 0 4px rgba(96, 165, 250, 0.35);
+}
+
+.session-action-btn.session-action-pause:focus-visible {
+  box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.18), 0 0 0 4px rgba(245, 158, 11, 0.35);
 }
 
 .session-action-btn.session-action-disabled,
@@ -109,6 +141,7 @@ html, body {
   color: #64748b;
   background: #e2e8f0;
   border-color: #cbd5e1;
+  box-shadow: none;
 }
 
 .session-state-pill.session-running::after {
@@ -1080,12 +1113,19 @@ option {
 
 .aircraft-filter-toggle-wrap {
   gap: 8px;
+  min-height: 34px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(120, 146, 168, 0.35);
+  background: linear-gradient(180deg, #f8fbfe 0%, #eef3f8 100%);
 }
 
 .aircraft-filter-toggle-wrap .form-check-label {
-  color: #22313f;
+  color: #334155;
+  font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
+  line-height: 1;
 }
 
 #aircraft-simple-toggle {
@@ -1106,18 +1146,32 @@ option {
 
 .entity-id-toggle-wrap {
   gap: 8px;
+  min-height: 34px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(120, 146, 168, 0.35);
+  background: linear-gradient(180deg, #f8fbfe 0%, #eef3f8 100%);
 }
 
 .entity-id-toggle-wrap .form-check-label {
-  color: #22313f;
+  color: #334155;
+  font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
+  line-height: 1;
 }
 
 #entity-id-toggle {
   width: 2.2em;
   height: 1.15em;
   cursor: pointer;
+}
+
+#global-agent-status,
+#global-sim-status {
+  min-height: 34px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .leaflet-tooltip.entity-id-tooltip {
@@ -1177,6 +1231,71 @@ option {
   background: linear-gradient(180deg, #f4fbff, #e3f2ff);
   color: #174d80;
   box-shadow: 0 0 0 0.14rem rgba(70, 150, 224, 0.16);
+}
+
+.tcc-header .tcc-team-selector {
+  min-width: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border-radius: 10px;
+  background: rgba(18, 28, 36, 0.72);
+  border: 1px solid rgba(122, 159, 184, 0.28);
+}
+
+.tcc-header .tcc-team-selector-label {
+  color: #9eb6c6;
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.tcc-header .tcc-team-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px;
+  border-radius: 999px;
+  background: rgba(8, 13, 18, 0.74);
+  border: 1px solid rgba(122, 159, 184, 0.24);
+}
+
+.tcc-header .tcc-team-switch-btn {
+  border: 1px solid transparent;
+  background: transparent;
+  color: #9eb6c6;
+  min-width: 54px;
+  height: 26px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.tcc-header .tcc-team-switch-btn:hover {
+  color: #e8f5ff;
+}
+
+.tcc-header .tcc-team-switch-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(8, 14, 20, 0.9), 0 0 0 4px rgba(142, 190, 219, 0.36);
+}
+
+.tcc-header .tcc-team-selector.team-red .tcc-team-switch-btn.is-active {
+  color: #ffd8d8;
+  background: linear-gradient(180deg, rgba(147, 34, 34, 0.86), rgba(117, 24, 24, 0.9));
+  border-color: rgba(243, 114, 114, 0.65);
+  box-shadow: 0 0 0 1px rgba(248, 113, 113, 0.25);
+}
+
+.tcc-header .tcc-team-selector.team-blue .tcc-team-switch-btn.is-active {
+  color: #d8ebff;
+  background: linear-gradient(180deg, rgba(29, 78, 216, 0.86), rgba(30, 64, 175, 0.9));
+  border-color: rgba(125, 211, 252, 0.62);
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.2);
 }
 
 .tcc-tabs {

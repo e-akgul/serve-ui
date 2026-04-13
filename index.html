@@ -45,6 +45,19 @@
 
 			  <li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				  Add
+				</a>
+				<ul class="dropdown-menu">
+				  <li><a class="dropdown-item" href="javascript:navHandler.createTacticalLandmarkEntity()">Tactical Landmark</a></li>
+				</ul>
+			  </li>
+
+			  <li class="nav-item">
+				<a class="nav-link" href="javascript:navHandler.openBackendSettings()">Settings</a>
+			  </li>
+
+			  <li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 				  More
 				</a>
 				<ul class="dropdown-menu">
@@ -63,19 +76,6 @@
 
 				</ul>
 			  </li>
-
-			  <li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-				  Add
-				</a>
-				<ul class="dropdown-menu">
-				  <li><a class="dropdown-item" href="javascript:navHandler.createTacticalLandmarkEntity()">Tactical Landmark</a></li>
-				</ul>
-			  </li>
-
-			  <li class="nav-item">
-				<a class="nav-link" href="javascript:navHandler.openBackendSettings()">Settings</a>
-			  </li>
 			</ul>
             <div class="d-flex align-items-center aircraft-filter-toggle-wrap me-3">
               <label class="form-check-label me-2 mb-0" for="aircraft-simple-toggle">Simple UI</label>
@@ -84,13 +84,6 @@
             <div class="d-flex align-items-center entity-id-toggle-wrap me-3">
               <label class="form-check-label me-2 mb-0" for="entity-id-toggle">Show IDs</label>
               <input class="form-check-input" type="checkbox" id="entity-id-toggle" onchange="navHandler.toggleEntityIds(this.checked)">
-            </div>
-            <div class="d-flex align-items-center user-team-selector">
-              <label class="me-2 mb-0" for="user-team-select">Team</label>
-              <select id="user-team-select" class="form-select form-select-sm" onchange="navHandler.setUserTeam(this.value)">
-                <option value="blue">Blue</option>
-                <option value="red" selected>Red</option>
-              </select>
             </div>
             <div class="d-flex align-items-center ms-2">
               <span id="global-agent-status" class="backend-status-chip status-unknown">Agent: Unknown</span>
