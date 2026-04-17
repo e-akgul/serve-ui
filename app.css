@@ -3452,3 +3452,44 @@ option {
   transform: translateY(-1px);
   box-shadow: 0 6px 12px rgba(75, 85, 99, 0.18);
 }
+
+.state-drop-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2500;
+  background: rgba(15, 23, 42, 0.32);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 140ms ease;
+}
+
+.state-drop-overlay.is-visible {
+  opacity: 1;
+}
+
+.state-drop-overlay-card {
+  min-width: 320px;
+  max-width: 460px;
+  border-radius: 14px;
+  border: 1px solid rgba(96, 165, 250, 0.45);
+  background: linear-gradient(180deg, rgba(248, 250, 252, 0.96), rgba(241, 245, 249, 0.96));
+  box-shadow: 0 24px 46px rgba(15, 23, 42, 0.24);
+  padding: 16px 20px;
+  text-align: center;
+}
+
+.state-drop-overlay-title {
+  color: #0f172a;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.state-drop-overlay-subtitle {
+  color: #334155;
+  font-size: 0.83rem;
+  margin-top: 4px;
+}
