@@ -43,10 +43,6 @@
 				</ul>
 			  </li>
 
-			  <li class="nav-item">
-				<a class="nav-link" href="javascript:navHandler.openBackendSettings()">Settings</a>
-			  </li>
-
 			  <li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 				  More
@@ -60,9 +56,9 @@
                   <li hidden><a class="dropdown-item" href="javascript:navHandler.loadPlans()">Load Plan</a></li>
 					<li data-sim-only="true"><a class="dropdown-item" data-optional-ui="true" data-hide-in-simple-ui="true" href="javascript:navHandler.serveTensorboards()">Serve Tensorboards (X)</a></li>
 				  	<li><a class="dropdown-item" data-optional-ui="true" data-hide-in-simple-ui="true" href="">Live Entity Info (X)</a></li>
-					  <li data-sim-only="true"><a class="dropdown-item" href="javascript:navHandler.startReinforce()">Start Session</a></li>
-					  <li data-sim-only="true"><a class="dropdown-item" href="javascript:navHandler.pauseOrResumeSession()">Pause / Continue Session</a></li>
-					  <li data-sim-only="true"><a class="dropdown-item" href="javascript:navHandler.terminateSession()">Terminate Session</a></li>
+					  <li data-sim-only="true" hidden><a class="dropdown-item" href="javascript:navHandler.startReinforce()">Start Session</a></li>
+					  <li data-sim-only="true" hidden><a class="dropdown-item" href="javascript:navHandler.pauseOrResumeSession()">Pause / Continue Session</a></li>
+					  <li data-sim-only="true" hidden><a class="dropdown-item" href="javascript:navHandler.terminateSession()">Terminate Session</a></li>
 
 				</ul>
 			  </li>
@@ -87,6 +83,13 @@
             <div class="d-flex align-items-center ms-2">
               <span id="global-sim-status" class="backend-status-chip status-unknown">Sim: Unknown</span>
             </div>
+			<div class="d-flex align-items-center ms-2">
+			  <button class="btn quick-state-btn quick-state-btn-settings" type="button" onclick="navHandler.openBackendSettings()" aria-label="Settings" title="Settings">
+				<svg viewBox="0 0 24 24" aria-hidden="true">
+				  <path d="M19.14 12.94a7.85 7.85 0 0 0 .05-.94 7.85 7.85 0 0 0-.05-.94l2.03-1.58a.5.5 0 0 0 .12-.65l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.3 7.3 0 0 0-1.63-.94l-.36-2.54a.5.5 0 0 0-.5-.43h-3.84a.5.5 0 0 0-.5.43l-.36 2.54a7.3 7.3 0 0 0-1.63.94l-2.39-.96a.5.5 0 0 0-.6.22L2.71 8.83a.5.5 0 0 0 .12.65l2.03 1.58a7.85 7.85 0 0 0-.05.94c0 .32.02.63.05.94L2.83 14.52a.5.5 0 0 0-.12.65l1.92 3.32a.5.5 0 0 0 .6.22l2.39-.96c.5.38 1.05.69 1.63.94l.36 2.54a.5.5 0 0 0 .5.43h3.84a.5.5 0 0 0 .5-.43l.36-2.54c.58-.25 1.13-.56 1.63-.94l2.39.96a.5.5 0 0 0 .6-.22l1.92-3.32a.5.5 0 0 0-.12-.65l-2.03-1.58ZM12 15.5A3.5 3.5 0 1 1 12 8.5a3.5 3.5 0 0 1 0 7Z"/>
+				</svg>
+			  </button>
+			</div>
 		  </div>
 		</div>
 	  </nav>
@@ -226,7 +229,7 @@
 		<div class="modal-dialog">
 		  <div class="modal-content backend-settings-modal-content">
 			<div class="modal-header">
-			  <h5 class="modal-title">Backend Settings</h5>
+			  <h5 class="modal-title">Settings</h5>
 			  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body backend-settings-body">
@@ -252,11 +255,11 @@
 				<div class="backend-setting-panel-title">Interface</div>
 				<div class="backend-setting-toggle-row">
 				  <label class="form-check-label mb-0" for="settings-simple-ui-toggle">Simple UI</label>
-				  <input class="form-check-input" type="checkbox" id="settings-simple-ui-toggle" checked onchange="navHandler.toggleSimpleAircraft(this.checked)">
+				  <button class="backend-toggle-btn is-on" type="button" id="settings-simple-ui-toggle" role="switch" aria-checked="true" aria-pressed="true" onclick="navHandler.toggleSimpleAircraft(this.getAttribute('aria-pressed') !== 'true')"><span class="backend-toggle-btn-track"><span class="backend-toggle-btn-thumb"></span></span></button>
 				</div>
 				<div class="backend-setting-toggle-row">
 				  <label class="form-check-label mb-0" for="settings-show-ids-toggle">Show IDs</label>
-				  <input class="form-check-input" type="checkbox" id="settings-show-ids-toggle" onchange="navHandler.toggleEntityIds(this.checked)">
+				  <button class="backend-toggle-btn" type="button" id="settings-show-ids-toggle" role="switch" aria-checked="false" aria-pressed="false" onclick="navHandler.toggleEntityIds(this.getAttribute('aria-pressed') !== 'true')"><span class="backend-toggle-btn-track"><span class="backend-toggle-btn-thumb"></span></span></button>
 				</div>
 			  </div>
 			</div>
