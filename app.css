@@ -648,6 +648,63 @@ body.modal-open .tcc-toggle-btn {
 .tcc-job-title { font-size: 0.8rem; color: #d8e3ea; margin-bottom: 2px; }
 .tcc-job-meta { font-size: 0.72rem; color: #a9bfcc; }
 
+.tcc-map-popup {
+  display: grid;
+  gap: 4px;
+}
+
+.tcc-map-job-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0 6px;
+}
+
+.tcc-map-job-btn {
+  border: 1px solid rgba(138, 170, 196, 0.45);
+  border-radius: 999px;
+  padding: 4px 12px;
+  background: rgba(28, 50, 66, 0.9);
+  color: #e6f3ff;
+  font-size: var(--tcc-font-xs);
+  font-weight: 600;
+  letter-spacing: .01em;
+  line-height: 1.4;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(7, 13, 18, 0.26);
+  transition: transform .12s ease, background-color .12s ease, border-color .12s ease, box-shadow .12s ease;
+}
+
+.tcc-map-job-btn:hover {
+  background: rgba(40, 72, 95, 0.95);
+  border-color: rgba(166, 201, 228, 0.58);
+  box-shadow: 0 4px 10px rgba(8, 16, 24, 0.32);
+  transform: translateY(-1px);
+}
+
+.tcc-map-job-btn:focus-visible {
+  outline: none;
+  border-color: rgba(182, 220, 247, 0.9);
+  box-shadow: 0 0 0 2px rgba(152, 199, 232, 0.32), 0 4px 10px rgba(8, 16, 24, 0.34);
+}
+
+.tcc-map-job-btn:active {
+  transform: translateY(1px);
+  background: rgba(23, 42, 56, 0.95);
+}
+
+.tcc-map-job-badge {
+  border: 1px solid rgba(131, 170, 197, 0.42);
+  border-radius: 999px;
+  background: rgba(16, 33, 46, 0.9);
+  color: #d5e9f8;
+  font-size: var(--tcc-font-xs);
+  font-weight: 500;
+  letter-spacing: .02em;
+  line-height: 1.5;
+  padding: 3px 10px;
+}
+
 
 .tcc-timeline-job {
   border-left-color: rgba(111, 188, 235, 0.6);
