@@ -1441,8 +1441,7 @@ option {
   cursor: pointer;
 }
 
-#global-agent-status,
-#global-sim-status {
+#global-agent-status {
   min-height: 34px;
   padding-top: 0;
   padding-bottom: 0;
