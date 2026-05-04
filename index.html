@@ -3,31 +3,15 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Wingman</title>
-    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <title>Reinforce</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <script>
-      (function () {
-        try {
-          var v = localStorage.getItem('ui.dark_mode');
-          document.documentElement.setAttribute('data-theme', v === 'false' ? 'light' : 'dark');
-        } catch (e) {
-          document.documentElement.setAttribute('data-theme', 'dark');
-        }
-      })();
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel='stylesheet' type='text/css' media='screen' href='app.css'>
     <script src='dist/bundle.js' defer></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg wg-navbar">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container-fluid">
-		 <a class="navbar-brand wg-brand" id="reinforceHome" href="javascript:navHandler.reinforce()" data-sim-only="true" aria-label="Wingman">
-			<span class="wg-brand-wordmark" data-text="WINGMAN">WINGMAN</span>
-		 </a>
+		 <a class="navbar-brand" id="reinforceHome" href="javascript:navHandler.reinforce()" data-sim-only="true">Reinforce</a>
 		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		  </button>
@@ -52,8 +36,10 @@
 				  Ground Entities
 				</a>
 				<ul class="dropdown-menu">
-				  <li><a class="dropdown-item" href="javascript:navHandler.createGroundEntity('mrsam')">SAM</a></li>
-				  <li><a class="dropdown-item" href="javascript:navHandler.createGroundEntity('generic')">Generic Ground</a></li>
+				  <li><a class="dropdown-item" href="javascript:navHandler.createGroundEntity('srsam')">Short Range</a></li>
+				  <li><a class="dropdown-item" href="javascript:navHandler.createGroundEntity('mrsam')">Medium Range</a></li>
+				  <li><a class="dropdown-item" href="javascript:navHandler.createGroundEntity('lrsam')">Long Range</a></li>
+				  <li><a class="dropdown-item" href="javascript:navHandler.createGroundEntity('generic')">Generic</a></li>
 				</ul>
 			  </li>
 
@@ -63,7 +49,7 @@
 				</a>
 					<ul class="dropdown-menu">
 						<li><a class="dropdown-item" href="javascript:navHandler.createMessengerEntity()">Create a Messenger</a></li>
-						<li><a class="dropdown-item" href="javascript:navHandler.createTacticalLandmarkEntity()">Create a Landmark</a></li>
+						<li><a class="dropdown-item" href="javascript:navHandler.createTacticalLandmarkEntity()">Create a Tactical Landmark</a></li>
 					  	<li hidden><a class="dropdown-item" href="javascript:navHandler.dumpScenario()">Dump Scenario</a></li>
                   <li hidden><a class="dropdown-item" href="javascript:navHandler.dumpPlans()">Dump Plan</a></li>
 					  	<li hidden><a class="dropdown-item" href="javascript:navHandler.loadScenario()">Load Scenario</a></li>
@@ -78,24 +64,29 @@
 			  </li>
 			</ul>
             <div class="d-flex align-items-center quick-state-actions me-2">
-              <button class="btn quick-state-btn" type="button" onclick="navHandler.loadState()" aria-label="Load State" title="Load State">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M12 21a1 1 0 0 1-1-1v-8.17l-2.59 2.58a1 1 0 1 1-1.41-1.42l4.3-4.29a1 1 0 0 1 1.4 0l4.3 4.3a1 1 0 1 1-1.42 1.4L13 11.84V20a1 1 0 0 1-1 1Z"/>
-                  <path d="M5 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V5H7v1a1 1 0 1 1-2 0V4Z"/>
-                </svg>
-              </button>
               <button class="btn quick-state-btn" type="button" onclick="navHandler.dumpState()" aria-label="Dump State" title="Dump State">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M12 3a1 1 0 0 1 1 1v8.17l2.59-2.58a1 1 0 1 1 1.41 1.42l-4.3 4.29a1 1 0 0 1-1.4 0l-4.3-4.3a1 1 0 1 1 1.42-1.4L11 12.16V4a1 1 0 0 1 1-1Z"/>
                   <path d="M5 16a1 1 0 0 1 1 1v1h12v-1a1 1 0 1 1 2 0v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1Z"/>
                 </svg>
               </button>
-              <button class="btn quick-state-btn quick-state-btn--settings" type="button" onclick="navHandler.openBackendSettings()" aria-label="Settings" title="Settings">
+              <button class="btn quick-state-btn" type="button" onclick="navHandler.loadState()" aria-label="Load State" title="Load State">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M19.14 12.94a7.85 7.85 0 0 0 .05-.94 7.85 7.85 0 0 0-.05-.94l2.03-1.58a.5.5 0 0 0 .12-.65l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.3 7.3 0 0 0-1.63-.94l-.36-2.54a.5.5 0 0 0-.5-.43h-3.84a.5.5 0 0 0-.5.43l-.36 2.54a7.3 7.3 0 0 0-1.63.94l-2.39-.96a.5.5 0 0 0-.6.22L2.71 8.83a.5.5 0 0 0 .12.65l2.03 1.58a7.85 7.85 0 0 0-.05.94c0 .32.02.63.05.94L2.83 14.52a.5.5 0 0 0-.12.65l1.92 3.32a.5.5 0 0 0 .6.22l2.39-.96c.5.38 1.05.69 1.63.94l.36 2.54a.5.5 0 0 0 .5.43h3.84a.5.5 0 0 0 .5-.43l.36-2.54c.58-.25 1.13-.56 1.63-.94l2.39.96a.5.5 0 0 0 .6-.22l1.92-3.32a.5.5 0 0 0-.12-.65l-2.03-1.58ZM12 15.5A3.5 3.5 0 1 1 12 8.5a3.5 3.5 0 0 1 0 7Z"/>
+                  <path d="M12 21a1 1 0 0 1-1-1v-8.17l-2.59 2.58a1 1 0 1 1-1.41-1.42l4.3-4.29a1 1 0 0 1 1.4 0l4.3 4.3a1 1 0 1 1-1.42 1.4L13 11.84V20a1 1 0 0 1-1 1Z"/>
+                  <path d="M5 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V5H7v1a1 1 0 1 1-2 0V4Z"/>
                 </svg>
               </button>
             </div>
+            <div class="d-flex align-items-center ms-2">
+              <span id="global-agent-status" class="backend-status-chip status-unknown">Agent: Unknown</span>
+            </div>
+			<div class="d-flex align-items-center ms-2">
+			  <button class="btn quick-state-btn quick-state-btn-settings" type="button" onclick="navHandler.openBackendSettings()" aria-label="Settings" title="Settings">
+				<svg viewBox="0 0 24 24" aria-hidden="true">
+				  <path d="M19.14 12.94a7.85 7.85 0 0 0 .05-.94 7.85 7.85 0 0 0-.05-.94l2.03-1.58a.5.5 0 0 0 .12-.65l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.3 7.3 0 0 0-1.63-.94l-.36-2.54a.5.5 0 0 0-.5-.43h-3.84a.5.5 0 0 0-.5.43l-.36 2.54a7.3 7.3 0 0 0-1.63.94l-2.39-.96a.5.5 0 0 0-.6.22L2.71 8.83a.5.5 0 0 0 .12.65l2.03 1.58a7.85 7.85 0 0 0-.05.94c0 .32.02.63.05.94L2.83 14.52a.5.5 0 0 0-.12.65l1.92 3.32a.5.5 0 0 0 .6.22l2.39-.96c.5.38 1.05.69 1.63.94l.36 2.54a.5.5 0 0 0 .5.43h3.84a.5.5 0 0 0 .5-.43l.36-2.54c.58-.25 1.13-.56 1.63-.94l2.39.96a.5.5 0 0 0 .6-.22l1.92-3.32a.5.5 0 0 0-.12-.65l-2.03-1.58ZM12 15.5A3.5 3.5 0 1 1 12 8.5a3.5 3.5 0 0 1 0 7Z"/>
+				</svg>
+			  </button>
+			</div>
 		  </div>
 		</div>
 	  </nav>
@@ -240,53 +231,37 @@
 			</div>
 			<div class="modal-body backend-settings-body">
 			  <div class="backend-settings-subtitle">Connection and interface preferences.</div>
-
-			  <div class="backend-setting-section">
+			  <div class="backend-setting-card backend-setting-panel mb-3">
 				<div class="backend-setting-panel-title">Connection</div>
-				<div class="backend-setting-field">
-				  <label class="form-label" for="backend-sim-url-input">Sim API</label>
-				  <div class="backend-input-wrap">
-					<input id="backend-sim-url-input" class="form-control" type="text" placeholder="http://localhost:5000">
-					<span class="backend-status-dot status-unknown" id="backend-sim-status" title="Sim status"></span>
-				  </div>
+				<div class="backend-setting-card mb-3">
+				<div class="backend-setting-head">
+				  <label class="form-label mb-0" for="backend-sim-url-input">Sim API</label>
+				  <span class="backend-status-chip backend-status-indicator status-unknown" id="backend-sim-status" title="Sim status"></span>
 				</div>
-				<div class="backend-setting-field">
-				  <label class="form-label" for="backend-agent-url-input">Agent API</label>
-				  <div class="backend-input-wrap">
-					<input id="backend-agent-url-input" class="form-control" type="text" placeholder="http://127.0.0.1:8001">
-					<span class="backend-status-dot status-unknown" id="backend-agent-status" title="Agent status"></span>
-				  </div>
-				</div>
-				<div class="backend-setting-field">
-				  <label class="form-label" for="backend-access-token-input">Access Token</label>
-				  <div class="backend-input-wrap">
-					<input id="backend-access-token-input" class="form-control" type="password" placeholder="Paste access key" autocomplete="off" spellcheck="false">
-					<span class="backend-status-dot status-unknown" id="backend-auth-status" title="Authorization status"></span>
-				  </div>
-				</div>
+				<input id="backend-sim-url-input" class="form-control" type="text" placeholder="http://localhost:5000">
 			  </div>
-
-			  <div class="backend-setting-divider"></div>
-
-			  <div class="backend-setting-section">
+			  <div class="backend-setting-card mb-1">
+				<div class="backend-setting-head">
+				  <label class="form-label mb-0" for="backend-agent-url-input">Agent API</label>
+				  <span class="backend-status-chip backend-status-indicator status-unknown" id="backend-agent-status" title="Agent status"></span>
+				</div>
+				<input id="backend-agent-url-input" class="form-control" type="text" placeholder="http://127.0.0.1:8001">
+			  </div>
+			  </div>
+			  <div class="backend-setting-card backend-setting-panel mb-1">
 				<div class="backend-setting-panel-title">Interface</div>
 				<div class="backend-setting-toggle-row">
-				  <label class="form-check-label" for="settings-dark-mode-toggle">Dark Mode</label>
-				  <button class="backend-toggle-btn is-on" type="button" id="settings-dark-mode-toggle" role="switch" aria-checked="true" aria-pressed="true" onclick="navHandler.toggleDarkMode(this.getAttribute('aria-pressed') !== 'true')"><span class="backend-toggle-btn-track"><span class="backend-toggle-btn-thumb"></span></span></button>
-				</div>
-				<div class="backend-setting-toggle-row">
-				  <label class="form-check-label" for="settings-simple-ui-toggle">Simple UI</label>
+				  <label class="form-check-label mb-0" for="settings-simple-ui-toggle">Simple UI</label>
 				  <button class="backend-toggle-btn is-on" type="button" id="settings-simple-ui-toggle" role="switch" aria-checked="true" aria-pressed="true" onclick="navHandler.toggleSimpleAircraft(this.getAttribute('aria-pressed') !== 'true')"><span class="backend-toggle-btn-track"><span class="backend-toggle-btn-thumb"></span></span></button>
 				</div>
 				<div class="backend-setting-toggle-row">
-				  <label class="form-check-label" for="settings-show-ids-toggle">Show IDs</label>
+				  <label class="form-check-label mb-0" for="settings-show-ids-toggle">Show IDs</label>
 				  <button class="backend-toggle-btn" type="button" id="settings-show-ids-toggle" role="switch" aria-checked="false" aria-pressed="false" onclick="navHandler.toggleEntityIds(this.getAttribute('aria-pressed') !== 'true')"><span class="backend-toggle-btn-track"><span class="backend-toggle-btn-thumb"></span></span></button>
 				</div>
-				<div class="backend-setting-toggle-row">
-				  <label class="form-check-label" for="settings-show-coords-toggle">Show Coords</label>
-				  <button class="backend-toggle-btn" type="button" id="settings-show-coords-toggle" role="switch" aria-checked="false" aria-pressed="false" onclick="navHandler.toggleEntityCoords(this.getAttribute('aria-pressed') !== 'true')"><span class="backend-toggle-btn-track"><span class="backend-toggle-btn-thumb"></span></span></button>
-				</div>
 			  </div>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 			</div>
 		  </div>
 		</div>
