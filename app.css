@@ -1434,48 +1434,96 @@ body.tcc-resizing {
   margin-bottom: 0;
 }
 
-.red-team-marker {
-  border: 2px solid black;
-  border-radius: 25px;
-  background-color: hsla(0, 100%, 50%, 0.479);
-}
-
-.blue-team-marker {
-  border: 2px solid black;
-  border-radius: 25px;
-  background-color: hsla(183, 100%, 50%, 0.467);
-}
-
-.neutral-team-marker {
-  border: 2px solid black;
-  border-radius: 25px;
-  background-color: rgba(128, 128, 128, 0.45);
-}
-
-.sr-marker {
-  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
-}
-
-.mr-marker{
-  box-shadow: 0 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.lr-marker{
-  box-shadow: 0 0 5px 40px rgba(0, 0, 0, 0.1);
-}
-
-.airport-marker{
+.entity-marker {
+  --team-color: #94a3b8;
+  --team-color-bright: #cbd5e1;
+  --team-color-deep: #475569;
+  --team-glow: rgba(148, 163, 184, 0.45);
+  background: transparent;
+  border: none;
   box-shadow: none;
+  pointer-events: auto;
 }
 
-.blue-team-marker.airport-marker {
-  box-shadow: none;
-  filter: none;
+.entity-marker .entity-marker-frame {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--team-color-bright);
+  background: radial-gradient(circle at 35% 30%, var(--team-color), var(--team-color-deep) 82%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.18),
+    0 2px 6px rgba(0, 0, 0, 0.5),
+    0 0 10px var(--team-glow);
 }
 
-.red-team-marker.airport-marker {
-  box-shadow: none;
-  filter: none;
+.entity-marker .entity-marker-glyph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  filter: drop-shadow(0 1px 1.5px rgba(0, 0, 0, 0.55));
+}
+
+.entity-marker .entity-marker-glyph svg {
+  width: 26px;
+  height: 26px;
+  display: block;
+}
+
+.entity-marker.red-team-marker {
+  --team-color: #ef4444;
+  --team-color-bright: #fca5a5;
+  --team-color-deep: #7f1d1d;
+  --team-glow: rgba(239, 68, 68, 0.55);
+}
+
+.entity-marker.blue-team-marker {
+  --team-color: #3b82f6;
+  --team-color-bright: #93c5fd;
+  --team-color-deep: #1e3a8a;
+  --team-glow: rgba(59, 130, 246, 0.55);
+}
+
+.entity-marker.neutral-team-marker {
+  --team-color: #94a3b8;
+  --team-color-bright: #e2e8f0;
+  --team-color-deep: #334155;
+  --team-glow: rgba(148, 163, 184, 0.4);
+}
+
+/* Entity type differentiation — SAM is a diamond, facility/messenger are soft squares */
+.entity-marker.kind-sam .entity-marker-frame {
+  border-radius: 4px;
+  transform: rotate(45deg);
+}
+
+.entity-marker.kind-facility .entity-marker-frame,
+.entity-marker.kind-messenger .entity-marker-frame {
+  border-radius: 6px;
+}
+
+/* Range rings for SAM — inherit the diamond shape */
+.entity-marker.kind-sam.sr-marker .entity-marker-frame::after,
+.entity-marker.kind-sam.mr-marker .entity-marker-frame::after,
+.entity-marker.kind-sam.lr-marker .entity-marker-frame::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: inherit;
+  border: 1px dashed var(--team-color-bright);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.entity-marker.kind-sam.mr-marker .entity-marker-frame::after {
+  inset: -12px;
+}
+
+.entity-marker.kind-sam.lr-marker .entity-marker-frame::after {
+  inset: -18px;
 }
 
 .rotated-icon {
