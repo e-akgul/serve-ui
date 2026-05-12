@@ -1416,6 +1416,34 @@ body.tcc-resizing {
   color: #f1f5f9 !important;
 }
 
+/* JSON textarea fields — monospace, tall, tab-friendly */
+textarea[name="MissionJobsJson"],
+textarea[name="MissionInterruptsJson"] {
+  font-family: var(--wg-font-mono, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace);
+  font-size: 0.8rem;
+  min-height: 280px;
+  tab-size: 2;
+  white-space: pre;
+}
+
+.wg-json-fmt-btn {
+  margin-top: 4px;
+  padding: 3px 10px;
+  font-size: 0.78rem;
+  border: 1px solid rgba(120, 170, 255, 0.35);
+  border-radius: 6px;
+  background: rgba(30, 58, 90, 0.55);
+  color: #93c5fd;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.wg-json-fmt-btn:hover {
+  border-color: rgba(120, 170, 255, 0.65);
+  background: rgba(30, 58, 90, 0.85);
+  color: #bfdbfe;
+}
+
 #basic-property-modal form > div,
 #initial-conditions-modal form > div,
 #weaponary-modal form > div,
