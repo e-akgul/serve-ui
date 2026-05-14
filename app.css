@@ -3562,6 +3562,7 @@ textarea[name="MissionInterruptsJson"] {
   text-overflow: ellipsis;
   white-space: nowrap;
   margin-bottom: -4px;
+  pointer-events: none;
 }
 
 .sp-acmi-name {
