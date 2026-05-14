@@ -648,6 +648,7 @@ body.modal-open .tcc-toggle-btn {
 
 .tcc-job-title { font-size: 0.8rem; color: #d8e3ea; margin-bottom: 2px; }
 .tcc-job-meta { font-size: 0.72rem; color: #a9bfcc; }
+.tcc-mission-parse-error { color: #ff7676; font-weight: 600; margin-bottom: 6px; }
 
 .tcc-map-popup {
   display: grid;
