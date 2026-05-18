@@ -121,6 +121,16 @@ body.modal-open .tcc-toggle-btn {
   z-index: 1000;
 }
 
+.tcc-toggle-btn .tcc-toggle-icon {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.2s ease;
+}
+
+.tcc-collapsed .tcc-toggle-btn .tcc-toggle-icon {
+  transform: scaleX(-1);
+}
+
 .tcc-resize-handle {
   position: absolute;
   left: -10px;
@@ -718,6 +728,30 @@ body.modal-open .tcc-toggle-btn {
   border-color: rgba(224, 171, 102, 0.6);
   background: rgba(84, 61, 28, 0.5);
   color: #ffefda;
+}
+
+.tcc-timeline-head-pills {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.tcc-timeline-head-pill-completion {
+  background: rgba(120, 200, 255, 0.18);
+  border-color: rgba(120, 200, 255, 0.4);
+  color: #b9dff5;
+}
+
+.tcc-entity-reasoning {
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: rgba(15, 26, 36, 0.5);
+  border-left: 3px solid rgba(120, 200, 255, 0.4);
+  border-radius: 4px;
+  color: #c8d8e4;
+  font-size: 0.82rem;
+  line-height: 1.45;
 }
 
 .tcc-job-meta-inline {
@@ -3245,6 +3279,32 @@ textarea[name="MissionInterruptsJson"] {
   border: 2px solid rgba(15, 23, 38, 0.65);
 }
 
+/* ========== Sidebar scrollbars: tactical dark ========== */
+.tcc-content,
+.wg-sig-list {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.45) rgba(15, 23, 38, 0.65);
+}
+.tcc-content::-webkit-scrollbar,
+.wg-sig-list::-webkit-scrollbar {
+  width: 10px;
+}
+.tcc-content::-webkit-scrollbar-track,
+.wg-sig-list::-webkit-scrollbar-track {
+  background: rgba(15, 23, 38, 0.65);
+  border-radius: 999px;
+}
+.tcc-content::-webkit-scrollbar-thumb,
+.wg-sig-list::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.45);
+  border-radius: 999px;
+  border: 2px solid rgba(15, 23, 38, 0.65);
+}
+.tcc-content::-webkit-scrollbar-thumb:hover,
+.wg-sig-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.65);
+}
+
 #tcc-sidebar.tcc-chat-mode .tcc-chat-row {
   display: flex;
   margin: 0;
@@ -5165,6 +5225,23 @@ body[data-scenario-locked="true"] .quick-state-actions > .quick-state-btn:not(.q
 [data-theme="light"] .leaflet-container a.leaflet-popup-close-button:hover,
 [data-theme="light"] .leaflet-container a.leaflet-popup-close-button:focus {
   color: #0369a1 !important;
+}
+[data-theme="light"] .tcc-content,
+[data-theme="light"] .wg-sig-list {
+  scrollbar-color: rgba(100, 116, 139, 0.5) rgba(241, 245, 249, 0.8);
+}
+[data-theme="light"] .tcc-content::-webkit-scrollbar-track,
+[data-theme="light"] .wg-sig-list::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.8);
+}
+[data-theme="light"] .tcc-content::-webkit-scrollbar-thumb,
+[data-theme="light"] .wg-sig-list::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.5);
+  border: 2px solid rgba(241, 245, 249, 0.8);
+}
+[data-theme="light"] .tcc-content::-webkit-scrollbar-thumb:hover,
+[data-theme="light"] .wg-sig-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.7);
 }
 [data-theme="light"] .leaflet-container .leaflet-control-attribution {
   background: rgba(255, 255, 255, 0.9) !important;
@@ -8561,6 +8638,37 @@ body[data-scenario-locked="true"] .wg-navbar .quick-state-actions > .quick-state
   width: 16px;
   height: 22px;
   display: block;
+}
+
+/* ========== Leaflet popup: tactical dark default ========== */
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: linear-gradient(180deg, rgba(15, 26, 36, 0.96) 0%, rgba(11, 19, 26, 0.96) 100%) !important;
+  color: #dbe7f1 !important;
+  border: 1px solid rgba(120, 200, 255, 0.32);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.55), 0 0 10px rgba(120, 200, 255, 0.1) !important;
+  backdrop-filter: blur(6px);
+}
+.leaflet-popup-content-wrapper {
+  border-radius: 10px;
+}
+.leaflet-popup-content {
+  font-family: var(--wg-font-ui);
+  font-size: 0.82rem;
+  letter-spacing: 0.01em;
+}
+.leaflet-popup-content a {
+  color: rgb(120, 200, 255);
+}
+.leaflet-container a.leaflet-popup-close-button {
+  color: #9fb3c8 !important;
+  font-size: 18px;
+  line-height: 22px;
+  transition: color 0.15s ease;
+}
+.leaflet-container a.leaflet-popup-close-button:hover,
+.leaflet-container a.leaflet-popup-close-button:focus {
+  color: #ffffff !important;
 }
 
 /* Job visualization — click popup */
