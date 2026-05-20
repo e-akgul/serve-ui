@@ -4027,6 +4027,18 @@ body[data-scenario-locked="true"] .quick-state-actions > .quick-state-btn:not(.q
   cursor: not-allowed;
 }
 
+/* Post-session playback and loaded-recording leave the scenario locked, but
+   the user still needs Dump State to export (or re-export) the recording.
+   Override the lock for the dump button only; Load State stays disabled so
+   the user can't yank a different state in mid-replay. */
+body[data-scenario-locked="true"][data-live-view-mode="playback"] .quick-state-actions > .quick-state-btn--dump,
+body[data-scenario-locked="true"][data-live-view-mode="loaded-recording"] .quick-state-actions > .quick-state-btn--dump {
+  pointer-events: auto;
+  opacity: 1;
+  filter: none;
+  cursor: pointer;
+}
+
 .quick-state-actions {
   gap: 8px;
 }
@@ -8338,6 +8350,15 @@ body[data-scenario-locked="true"] .wg-navbar .quick-state-actions > .quick-state
   opacity: 0.4;
   filter: grayscale(0.55);
   cursor: not-allowed;
+}
+
+/* Same playback/loaded-recording dump override as above, scoped to wg-navbar. */
+body[data-scenario-locked="true"][data-live-view-mode="playback"] .wg-navbar .quick-state-actions > .quick-state-btn--dump,
+body[data-scenario-locked="true"][data-live-view-mode="loaded-recording"] .wg-navbar .quick-state-actions > .quick-state-btn--dump {
+  pointer-events: auto;
+  opacity: 1;
+  filter: none;
+  cursor: pointer;
 }
 
 /* ========== TCC: jobs timeline coord block, selection state, nested branch ========== */
