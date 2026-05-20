@@ -1329,6 +1329,48 @@ body.tcc-resizing {
 #wingmen-modal .modal-body,
 #intel-modal .modal-body {
   padding: 18px 20px 20px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.45) rgba(15, 23, 38, 0.65);
+}
+
+#basic-property-modal .modal-body::-webkit-scrollbar,
+#initial-conditions-modal .modal-body::-webkit-scrollbar,
+#weaponary-modal .modal-body::-webkit-scrollbar,
+#training-args-modal .modal-body::-webkit-scrollbar,
+#wingmen-modal .modal-body::-webkit-scrollbar,
+#intel-modal .modal-body::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+#basic-property-modal .modal-body::-webkit-scrollbar-track,
+#initial-conditions-modal .modal-body::-webkit-scrollbar-track,
+#weaponary-modal .modal-body::-webkit-scrollbar-track,
+#training-args-modal .modal-body::-webkit-scrollbar-track,
+#wingmen-modal .modal-body::-webkit-scrollbar-track,
+#intel-modal .modal-body::-webkit-scrollbar-track {
+  background: rgba(15, 23, 38, 0.65);
+  border-radius: 999px;
+}
+
+#basic-property-modal .modal-body::-webkit-scrollbar-thumb,
+#initial-conditions-modal .modal-body::-webkit-scrollbar-thumb,
+#weaponary-modal .modal-body::-webkit-scrollbar-thumb,
+#training-args-modal .modal-body::-webkit-scrollbar-thumb,
+#wingmen-modal .modal-body::-webkit-scrollbar-thumb,
+#intel-modal .modal-body::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.45);
+  border-radius: 999px;
+  border: 2px solid rgba(15, 23, 38, 0.65);
+}
+
+#basic-property-modal .modal-body::-webkit-scrollbar-thumb:hover,
+#initial-conditions-modal .modal-body::-webkit-scrollbar-thumb:hover,
+#weaponary-modal .modal-body::-webkit-scrollbar-thumb:hover,
+#training-args-modal .modal-body::-webkit-scrollbar-thumb:hover,
+#wingmen-modal .modal-body::-webkit-scrollbar-thumb:hover,
+#intel-modal .modal-body::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.65);
 }
 
 #basic-property-modal .modal-footer,
@@ -1477,6 +1519,215 @@ textarea[name="MissionInterruptsJson"] {
   border-color: rgba(120, 170, 255, 0.65);
   background: rgba(30, 58, 90, 0.85);
   color: #bfdbfe;
+}
+
+.wg-composed-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wg-segmented-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  align-self: flex-start;
+}
+
+.wg-segmented-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
+.wg-segmented {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(120, 170, 255, 0.22);
+}
+
+.wg-segmented-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  border: none;
+  background: transparent;
+  color: #94a3b8;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease, transform 120ms ease;
+}
+
+.wg-segmented-btn:not(.is-active):hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #cbd5e1;
+}
+
+.wg-segmented-btn:not(.is-active):active {
+  transform: scale(0.97);
+}
+
+.wg-segmented-btn.is-active {
+  background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+  color: #ffffff;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.18) inset, 0 1px 4px rgba(37, 99, 235, 0.45);
+}
+
+.wg-segmented-icon {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85em;
+  opacity: 0.85;
+}
+
+.wg-segmented-btn.is-active .wg-segmented-icon {
+  opacity: 1;
+}
+
+.wg-composed-section-heading {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin-bottom: 4px;
+}
+
+.wg-composed-error {
+  margin-top: 4px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(248, 113, 113, 0.45);
+  background: rgba(127, 29, 29, 0.35);
+  color: #fecaca;
+  font-size: 0.78rem;
+}
+
+.wg-composed-empty {
+  padding: 10px;
+  font-size: 0.78rem;
+  color: #94a3b8;
+  font-style: italic;
+}
+
+.wg-composed-card {
+  margin: 6px 0;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(120, 170, 255, 0.25);
+  background: rgba(15, 23, 42, 0.6);
+}
+
+.wg-composed-card-header {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+
+.wg-composed-card-index {
+  font-size: 0.72rem;
+  color: #64748b;
+}
+
+.wg-composed-card-type {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #93c5fd;
+}
+
+.wg-composed-card-type-unknown {
+  color: #fbbf24;
+}
+
+.wg-composed-card-fields {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 2px 12px;
+  font-size: 0.78rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.wg-composed-card-row {
+  display: contents;
+}
+
+.wg-composed-card-key {
+  color: #64748b;
+}
+
+.wg-composed-card-value {
+  color: #cbd5e1;
+  word-break: break-word;
+}
+
+.wg-composed-card-note,
+.wg-composed-card-warn {
+  margin-top: 6px;
+  font-size: 0.72rem;
+  color: #fbbf24;
+  font-style: italic;
+}
+
+.wg-composed-branch-section {
+  margin-top: 8px;
+  padding: 6px 0 6px 12px;
+  border-left: 2px solid rgba(59, 130, 246, 0.4);
+}
+
+.wg-composed-branch-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #93c5fd;
+  margin-bottom: 4px;
+}
+
+.wg-composed-branch-empty {
+  padding: 4px 0;
+  font-size: 0.72rem;
+  color: #94a3b8;
+  font-style: italic;
+}
+
+.wg-composed-branch-too-deep {
+  padding: 4px 0;
+  font-size: 0.72rem;
+  color: #fbbf24;
+  font-style: italic;
+}
+
+.wg-composed-json-section textarea {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.45) rgba(15, 23, 38, 0.65);
+}
+
+.wg-composed-json-section textarea::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.wg-composed-json-section textarea::-webkit-scrollbar-track {
+  background: rgba(15, 23, 38, 0.65);
+  border-radius: 999px;
+}
+
+.wg-composed-json-section textarea::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.45);
+  border-radius: 999px;
+  border: 2px solid rgba(15, 23, 38, 0.65);
+}
+
+.wg-composed-json-section textarea::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.65);
 }
 
 #basic-property-modal form > div,
