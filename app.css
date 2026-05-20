@@ -3817,13 +3817,13 @@ textarea[name="MissionInterruptsJson"] {
 }
 
 .sp-live-btn {
-  height: 26px;
-  padding: 0 10px;
+  height: 20px;
+  padding: 0 8px;
   border: 1px solid rgba(34, 197, 94, 0.35);
-  border-radius: 6px;
+  border-radius: 5px;
   background: rgba(34, 197, 94, 0.1);
   color: #86efac;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
   cursor: pointer;
   white-space: nowrap;
