@@ -9017,3 +9017,189 @@ body[data-scenario-locked="true"][data-live-view-mode="loaded-recording"] .wg-na
   color: #facc15;
 }
 
+/* ========== Light theme: composed editor ========== */
+[data-theme="light"] .wg-segmented-label {
+  color: #475569;
+}
+[data-theme="light"] .wg-segmented {
+  background: rgba(241, 245, 249, 0.9);
+  border-color: rgba(2, 132, 199, 0.22);
+}
+[data-theme="light"] .wg-segmented-btn {
+  color: #64748b;
+}
+[data-theme="light"] .wg-segmented-btn:not(.is-active):hover {
+  background: rgba(15, 23, 42, 0.05);
+  color: #0f172a;
+}
+[data-theme="light"] .wg-segmented-btn.is-active {
+  background: linear-gradient(180deg, #0ea5e9 0%, #0284c7 100%);
+  color: #ffffff;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 1px 4px rgba(2, 132, 199, 0.35);
+}
+
+[data-theme="light"] .wg-composed-section-heading {
+  color: #475569;
+}
+[data-theme="light"] .wg-composed-empty {
+  color: #64748b;
+}
+[data-theme="light"] .wg-composed-error {
+  border-color: rgba(185, 28, 28, 0.4);
+  background: rgba(254, 226, 226, 0.6);
+  color: #991b1b;
+}
+
+[data-theme="light"] .wg-composed-card {
+  border-color: rgba(2, 132, 199, 0.22);
+  background: rgba(255, 255, 255, 0.85);
+}
+[data-theme="light"] .wg-composed-card-index {
+  color: #94a3b8;
+}
+[data-theme="light"] .wg-composed-card-type {
+  color: #0369a1;
+}
+[data-theme="light"] .wg-composed-card-type-unknown {
+  color: #b45309;
+}
+[data-theme="light"] .wg-composed-card-key {
+  color: #64748b;
+}
+[data-theme="light"] .wg-composed-card-value {
+  color: #0f172a;
+}
+[data-theme="light"] .wg-composed-card-note,
+[data-theme="light"] .wg-composed-card-warn {
+  color: #b45309;
+}
+
+[data-theme="light"] .wg-composed-branch-section {
+  border-left-color: rgba(2, 132, 199, 0.45);
+}
+[data-theme="light"] .wg-composed-branch-label {
+  color: #0369a1;
+}
+[data-theme="light"] .wg-composed-branch-empty {
+  color: #64748b;
+}
+[data-theme="light"] .wg-composed-branch-too-deep {
+  color: #b45309;
+}
+
+[data-theme="light"] .wg-json-fmt-btn {
+  border-color: rgba(2, 132, 199, 0.35);
+  background: rgba(224, 242, 254, 0.6);
+  color: #0369a1;
+}
+[data-theme="light"] .wg-json-fmt-btn:hover {
+  border-color: rgba(2, 132, 199, 0.6);
+  background: rgba(186, 230, 253, 0.8);
+  color: #075985;
+}
+
+[data-theme="light"] .wg-composed-json-section textarea {
+  scrollbar-color: rgba(100, 116, 139, 0.5) rgba(241, 245, 249, 0.8);
+}
+[data-theme="light"] .wg-composed-json-section textarea::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.8);
+}
+[data-theme="light"] .wg-composed-json-section textarea::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.5);
+  border-color: rgba(241, 245, 249, 0.8);
+}
+[data-theme="light"] .wg-composed-json-section textarea::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.7);
+}
+
+[data-theme="light"] #basic-property-modal .modal-body,
+[data-theme="light"] #initial-conditions-modal .modal-body,
+[data-theme="light"] #weaponary-modal .modal-body,
+[data-theme="light"] #training-args-modal .modal-body,
+[data-theme="light"] #wingmen-modal .modal-body,
+[data-theme="light"] #intel-modal .modal-body {
+  scrollbar-color: rgba(100, 116, 139, 0.5) rgba(241, 245, 249, 0.8);
+}
+[data-theme="light"] #basic-property-modal .modal-body::-webkit-scrollbar-track,
+[data-theme="light"] #initial-conditions-modal .modal-body::-webkit-scrollbar-track,
+[data-theme="light"] #weaponary-modal .modal-body::-webkit-scrollbar-track,
+[data-theme="light"] #training-args-modal .modal-body::-webkit-scrollbar-track,
+[data-theme="light"] #wingmen-modal .modal-body::-webkit-scrollbar-track,
+[data-theme="light"] #intel-modal .modal-body::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.8);
+}
+[data-theme="light"] #basic-property-modal .modal-body::-webkit-scrollbar-thumb,
+[data-theme="light"] #initial-conditions-modal .modal-body::-webkit-scrollbar-thumb,
+[data-theme="light"] #weaponary-modal .modal-body::-webkit-scrollbar-thumb,
+[data-theme="light"] #training-args-modal .modal-body::-webkit-scrollbar-thumb,
+[data-theme="light"] #wingmen-modal .modal-body::-webkit-scrollbar-thumb,
+[data-theme="light"] #intel-modal .modal-body::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.5);
+  border-color: rgba(241, 245, 249, 0.8);
+}
+[data-theme="light"] #basic-property-modal .modal-body::-webkit-scrollbar-thumb:hover,
+[data-theme="light"] #initial-conditions-modal .modal-body::-webkit-scrollbar-thumb:hover,
+[data-theme="light"] #weaponary-modal .modal-body::-webkit-scrollbar-thumb:hover,
+[data-theme="light"] #training-args-modal .modal-body::-webkit-scrollbar-thumb:hover,
+[data-theme="light"] #wingmen-modal .modal-body::-webkit-scrollbar-thumb:hover,
+[data-theme="light"] #intel-modal .modal-body::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.7);
+}
+
+/* ========== Light theme: TCC sidebar Force Snapshot ========== */
+[data-theme="light"] .tcc-force-chip {
+  background: rgba(241, 245, 249, 0.85);
+  border-color: rgba(2, 132, 199, 0.22);
+}
+[data-theme="light"] .tcc-force-chip-label {
+  color: #64748b;
+}
+[data-theme="light"] .tcc-force-chip-value {
+  color: #0f172a;
+}
+[data-theme="light"] .tcc-force-notes {
+  background: rgba(224, 242, 254, 0.4);
+  border-left-color: rgba(2, 132, 199, 0.45);
+  color: #1e293b;
+}
+
+/* ========== Light theme: TCC sidebar Enemy Ground Sites ========== */
+[data-theme="light"] .tcc-enemy-card {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(2, 132, 199, 0.18);
+  border-left-color: rgba(220, 38, 38, 0.5);
+}
+[data-theme="light"] .tcc-enemy-id {
+  color: #64748b;
+}
+[data-theme="light"] .tcc-enemy-label {
+  color: #0f172a;
+}
+[data-theme="light"] .tcc-enemy-pill {
+  background: rgba(241, 245, 249, 0.9);
+  border-color: rgba(120, 148, 168, 0.3);
+  color: #334155;
+}
+[data-theme="light"] .tcc-enemy-body {
+  border-top-color: rgba(2, 132, 199, 0.15);
+}
+[data-theme="light"] .tcc-enemy-k {
+  color: #475569;
+}
+[data-theme="light"] .tcc-enemy-v {
+  color: #1e293b;
+}
+
+/* ========== Light theme: TCC sidebar Entity Overview ========== */
+[data-theme="light"] .tcc-entity-overview-card {
+  border-left-color: rgba(2, 132, 199, 0.55);
+}
+[data-theme="light"] .tcc-entity-overview-metrics .tcc-metric {
+  background: rgba(241, 245, 249, 0.85);
+}
+[data-theme="light"] .tcc-entity-reasoning {
+  background: rgba(241, 245, 249, 0.6);
+  border-left-color: rgba(2, 132, 199, 0.45);
+  color: #1e293b;
+}
+
