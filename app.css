@@ -255,6 +255,60 @@ body.modal-open .tcc-toggle-btn {
   min-height: 32px;
 }
 
+/* Plan/replan status strip (TCC view) */
+#tcc-sidebar .tcc-status-banner {
+  padding: 8px 16px;
+  background: rgba(15, 23, 42, 0.92);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+}
+#tcc-sidebar .tcc-status-banner[hidden] { display: none; }
+#tcc-sidebar .tcc-status-progress {
+  height: 3px;
+  border-radius: 3px;
+  background: rgba(148, 163, 184, 0.2);
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+#tcc-sidebar .tcc-status-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #22d3ee);
+  transition: width 0.4s ease;
+}
+#tcc-sidebar .tcc-status-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+}
+#tcc-sidebar .tcc-status-label { font-weight: 650; color: #e5edff; }
+#tcc-sidebar .tcc-status-elapsed {
+  margin-left: auto;
+  opacity: 0.7;
+  font-variant-numeric: tabular-nums;
+}
+#tcc-sidebar .tcc-status-spinner {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 2px solid rgba(148, 163, 184, 0.35);
+  border-top-color: #60a5fa;
+  animation: tcc-spin 0.8s linear infinite;
+  flex: 0 0 auto;
+}
+@keyframes tcc-spin { to { transform: rotate(360deg); } }
+#tcc-sidebar .tcc-status-steps {
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+  font-size: 0.74rem;
+}
+#tcc-sidebar .tcc-step.is-done { color: #4ade80; }
+#tcc-sidebar .tcc-step.is-active { color: #fbbf24; }
+#tcc-sidebar .tcc-step.is-pending { color: #94a3b8; opacity: 0.6; }
+#tcc-sidebar .tcc-step-sep { color: #475569; }
+
 .tcc-strip-row {
   display: flex;
   flex-wrap: wrap;
@@ -2220,7 +2274,7 @@ textarea[name="MissionInterruptsJson"] {
 .leaflet-tooltip.entity-id-tooltip {
   font-size: 10px;
   font-weight: 700;
-  line-height: 1;
+  line-height: 1.2;
   padding: 2px 5px;
   border-radius: 999px;
   color: #eef8ff;
@@ -2228,12 +2282,202 @@ textarea[name="MissionInterruptsJson"] {
   border: 1px solid rgba(164, 196, 221, 0.45);
   letter-spacing: 0.02em;
   pointer-events: none;
-  white-space: nowrap;
+  white-space: normal;
+  text-align: center;
   box-shadow: none;
 }
 
 .leaflet-tooltip-top.entity-id-tooltip:before {
   display: none;
+}
+
+.entity-id-tooltip-mission {
+  color: #ffd97a;
+  font-weight: 600;
+}
+
+.entity-id-tooltip-mission--clickable {
+  pointer-events: auto;
+  cursor: pointer;
+  text-decoration: underline dotted rgba(255, 217, 122, 0.55);
+  text-underline-offset: 2px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+.entity-id-tooltip-mission--clickable:hover {
+  color: #fff1c2;
+  text-decoration-color: #fff1c2;
+}
+.entity-id-tooltip-mission--clickable:focus-visible {
+  outline: 1px solid #fff1c2;
+  outline-offset: 1px;
+}
+
+.tcc-timeline-job--flash {
+  animation: tcc-job-flash 800ms ease-out;
+}
+@keyframes tcc-job-flash {
+  0%   { background: rgba(96, 165, 250, 0.45); }
+  100% { background: transparent; }
+}
+
+.entity-id-tooltip-interrupt {
+  color: #ff8866;
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+.wg-missile-icon {
+  pointer-events: none;
+}
+
+.wg-missile-shell {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  transform: rotate(calc(var(--wg-missile-heading-deg, 0deg) - 90deg));
+  transform-origin: 50% 50%;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.45));
+}
+
+.wg-missile-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.wg-missile-body {
+  fill: rgba(226, 232, 240, 0.92);
+  stroke: rgba(15, 23, 42, 0.44);
+  stroke-width: 0.6;
+}
+
+.wg-missile-fin {
+  fill: rgba(148, 163, 184, 0.72);
+}
+
+.wg-missile-nose {
+  fill: rgba(248, 250, 252, 0.94);
+}
+
+.wg-missile-window {
+  fill: rgba(56, 189, 248, 0.85);
+}
+
+.wg-missile-thrust {
+  position: absolute;
+  left: -5px;
+  top: 10px;
+  width: 9px;
+  height: 8px;
+  border-radius: 70% 20% 20% 70%;
+  background: radial-gradient(
+    circle at 80% 50%,
+    rgba(251, 191, 36, 0.95) 0%,
+    rgba(251, 146, 60, 0.85) 45%,
+    rgba(239, 68, 68, 0) 100%
+  );
+  transform-origin: 100% 50%;
+  animation: wg-missile-thrust 260ms ease-in-out infinite;
+}
+
+@keyframes wg-missile-thrust {
+  0%, 100% { transform: scaleX(0.82) scaleY(0.86); opacity: 0.72; }
+  50%      { transform: scaleX(1.16) scaleY(1); opacity: 0.96; }
+}
+
+.wg-missile-aura {
+  position: absolute;
+  inset: 4px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  opacity: 0.55;
+  animation: wg-missile-aura 780ms ease-in-out infinite;
+}
+
+@keyframes wg-missile-aura {
+  0%, 100% { transform: scale(0.92); opacity: 0.35; }
+  50%      { transform: scale(1.08); opacity: 0.72; }
+}
+
+.wg-missile--red { color: #fb7185; }
+.wg-missile--blue { color: #60a5fa; }
+.wg-missile--neutral { color: #a3b3c8; }
+
+.wg-missile-trail {
+  opacity: 0.24;
+}
+
+.leaflet-tooltip.wg-missile-id-tooltip {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: rgba(15, 23, 42, 0.85);
+  color: #e2e8f0;
+  border: 1px solid rgba(148, 163, 184, 0.55);
+  pointer-events: none;
+  white-space: nowrap;
+  box-shadow: none;
+}
+.leaflet-tooltip.wg-missile-id-tooltip::before { display: none; }
+
+.wg-missile-impact {
+  pointer-events: none;
+}
+
+.wg-missile-impact-flash {
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(251, 191, 36, 0.7) 40%,
+    rgba(239, 68, 68, 0) 100%
+  );
+  animation: wg-missile-impact-flash 320ms ease-out forwards;
+}
+
+@keyframes wg-missile-impact-flash {
+  0%   { transform: scale(0.4); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.wg-missile-impact-core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  transform: translate(-50%, -50%);
+  animation: wg-missile-impact-core 700ms ease-out forwards;
+}
+
+@keyframes wg-missile-impact-core {
+  0%   { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(0.3); opacity: 0; }
+}
+
+.wg-missile-impact-ring {
+  position: absolute;
+  inset: 16px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  opacity: 0.85;
+  animation: wg-missile-impact-ring 700ms ease-out forwards;
+}
+
+.wg-missile-impact-ring--late {
+  animation-delay: 160ms;
+  inset: 18px;
+}
+
+@keyframes wg-missile-impact-ring {
+  0%   { transform: scale(0.5); opacity: 0.9; }
+  100% { transform: scale(2.2); opacity: 0; }
 }
 
 .leaflet-tooltip.entity-coord-tooltip {
@@ -3801,7 +4045,7 @@ textarea[name="MissionInterruptsJson"] {
 
 #tcc-sidebar.tcc-chat-mode .tcc-chat-shell {
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: auto 1fr auto;
   gap: 12px;
   min-height: 100%;
   height: 100%;
@@ -3915,6 +4159,97 @@ textarea[name="MissionInterruptsJson"] {
   letter-spacing: 0.01em;
 }
 
+/* Rendered markdown for assistant replies */
+#tcc-sidebar.tcc-chat-mode .tcc-chat-md > *:first-child { margin-top: 0; }
+#tcc-sidebar.tcc-chat-mode .tcc-chat-md > *:last-child { margin-bottom: 0; }
+
+#tcc-sidebar.tcc-chat-mode .tcc-chat-md p {
+  margin: 0 0 8px;
+}
+
+#tcc-sidebar.tcc-chat-mode .tcc-chat-md h1,
+#tcc-sidebar.tcc-chat-mode .tcc-chat-md h2,
+#tcc-sidebar.tcc-chat-mode .tcc-chat-md h3,
+#tcc-sidebar.tcc-chat-mode .tcc-chat-md h4 {
+  margin: 12px 0 6px;
+  line-height: 1.3;
+  font-weight: 650;
+}
+#tcc-sidebar.tcc-chat-mode .tcc-chat-md h1 { font-size: 1.05rem; }
+#tcc-sidebar.tcc-chat-mode .tcc-chat-md h2 { font-size: 1rem; }
+#tcc-sidebar.tcc-chat-mode .tcc-chat-md h3 { font-size: 0.92rem; }
+#tcc-sidebar.tcc-chat-mode .tcc-chat-md h4 { font-size: 0.88rem; }
+
+#tcc-sidebar.tcc-chat-mode .tcc-chat-md ul,
+#tcc-sidebar.tcc-chat-mode .tcc-chat-md ol {
+  margin: 4px 0 8px;
+  padding-left: 1.3em;
+}
+#tcc-sidebar.tcc-chat-mode .tcc-chat-md li {
+  margin: 2px 0;
+}
+#tcc-sidebar.tcc-chat-mode .tcc-chat-md li > ul,
+#tcc-sidebar.tcc-chat-mode .tcc-chat-md li > ol {
+  margin: 2px 0;
+}
+
+#tcc-sidebar.tcc-chat-mode .tcc-chat-md strong { font-weight: 680; }
+#tcc-sidebar.tcc-chat-mode .tcc-chat-md em { font-style: italic; }
+
+#tcc-sidebar.tcc-chat-mode .tcc-chat-md code {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Monaco, monospace;
+  font-size: 0.82em;
+  background: rgba(148, 163, 184, 0.18);
+  padding: 1px 5px;
+  border-radius: 5px;
+  word-break: break-word;
+}
+
+#tcc-sidebar.tcc-chat-mode .tcc-chat-md pre {
+  margin: 6px 0 8px;
+  padding: 8px 10px;
+  background: rgba(15, 23, 38, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 8px;
+  overflow-x: auto;
+}
+#tcc-sidebar.tcc-chat-mode .tcc-chat-md pre code {
+  background: transparent;
+  padding: 0;
+  font-size: 0.82rem;
+}
+
+#tcc-sidebar.tcc-chat-mode .tcc-chat-md a {
+  color: #93c5fd;
+  text-decoration: underline;
+  word-break: break-word;
+}
+
+#tcc-sidebar.tcc-chat-mode .tcc-chat-md blockquote {
+  margin: 6px 0;
+  padding-left: 10px;
+  border-left: 3px solid rgba(148, 163, 184, 0.4);
+  opacity: 0.92;
+}
+
+#tcc-sidebar.tcc-chat-mode .tcc-chat-md table {
+  border-collapse: collapse;
+  margin: 6px 0;
+  display: block;
+  overflow-x: auto;
+  max-width: 100%;
+}
+#tcc-sidebar.tcc-chat-mode .tcc-chat-md th,
+#tcc-sidebar.tcc-chat-mode .tcc-chat-md td {
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  padding: 4px 8px;
+  text-align: left;
+}
+#tcc-sidebar.tcc-chat-mode .tcc-chat-md th {
+  background: rgba(148, 163, 184, 0.12);
+  font-weight: 650;
+}
+
 #tcc-sidebar.tcc-chat-mode .tcc-chat-msg-user .tcc-chat-bubble {
   background: var(--chat-user);
   border-color: rgba(125, 178, 255, 0.5);
@@ -3953,6 +4288,103 @@ textarea[name="MissionInterruptsJson"] {
   border: 1px solid var(--chat-border);
   border-radius: 14px;
   padding: 8px;
+}
+
+#tcc-sidebar.tcc-chat-mode .tcc-chat-session-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  color: var(--chat-text);
+  padding: 4px 8px;
+  margin-bottom: 6px;
+  background: var(--chat-panel-2);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 10px;
+  width: fit-content;
+}
+
+#tcc-sidebar.tcc-chat-mode .tcc-chat-session-label {
+  font-weight: 600;
+  opacity: 0.7;
+  letter-spacing: 0.04em;
+}
+
+#tcc-sidebar.tcc-chat-mode .tcc-chat-session-id {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Monaco, monospace;
+  opacity: 0.95;
+}
+
+#tcc-sidebar.tcc-chat-mode .tcc-chat-session-reset {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: 0.85rem;
+  line-height: 1;
+  padding: 2px 4px;
+  border-radius: 6px;
+  opacity: 0.7;
+}
+
+#tcc-sidebar.tcc-chat-mode .tcc-chat-session-reset:hover {
+  opacity: 1;
+  background: rgba(248, 113, 113, 0.2);
+}
+
+#tcc-sidebar.tcc-chat-mode .tcc-chat-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+#tcc-sidebar.tcc-chat-mode .tcc-chat-header .tcc-chat-session-badge {
+  margin-bottom: 0;
+}
+
+#tcc-sidebar.tcc-chat-mode .tcc-chat-actions {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+}
+
+#tcc-sidebar.tcc-chat-mode .tcc-chat-io-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 8px;
+  background: var(--chat-panel-2);
+  color: var(--chat-text);
+  opacity: 0.78;
+  cursor: pointer;
+  transition: opacity 120ms ease, background 120ms ease;
+}
+
+#tcc-sidebar.tcc-chat-mode .tcc-chat-io-btn:hover {
+  opacity: 1;
+  background: rgba(96, 165, 250, 0.18);
+}
+
+#tcc-sidebar.tcc-chat-mode .tcc-chat-io-btn:disabled {
+  opacity: 0.32;
+  cursor: not-allowed;
+}
+
+#tcc-sidebar.tcc-chat-mode .tcc-chat-io-btn svg {
+  width: 15px;
+  height: 15px;
+  pointer-events: none;
+}
+
+#tcc-sidebar.tcc-chat-mode .tcc-chat-msg-pending .tcc-chat-bubble {
+  background: var(--chat-panel-2);
+  opacity: 0.85;
 }
 
 #tcc-sidebar.tcc-chat-mode .tcc-chat-command-input {
