@@ -2312,6 +2312,22 @@ textarea[name="MissionInterruptsJson"] {
   outline-offset: 1px;
 }
 
+.entity-id-tooltip-interrupt--clickable {
+  pointer-events: auto;
+  cursor: pointer;
+  text-decoration: underline dotted rgba(255, 136, 102, 0.55);
+  text-underline-offset: 2px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+.entity-id-tooltip-interrupt--clickable:hover {
+  color: #ffb09a;
+  text-decoration-color: #ffb09a;
+}
+.entity-id-tooltip-interrupt--clickable:focus-visible {
+  outline: 1px solid #ffb09a;
+  outline-offset: 1px;
+}
+
 .tcc-timeline-job--flash {
   animation: tcc-job-flash 800ms ease-out;
 }
@@ -9405,6 +9421,11 @@ body[data-scenario-locked="true"][data-live-view-mode="loaded-recording"] .wg-na
 .tcc-timeline-job-selected {
   border: 1px solid #facc15 !important;
   box-shadow: 0 0 0 2px rgba(250, 204, 21, 0.22);
+}
+
+.tcc-int-card-selected {
+  border: 1px solid #ff8866 !important;
+  box-shadow: 0 0 0 2px rgba(255, 136, 102, 0.22);
 }
 
 .tcc-branch-nested-wrapper {
